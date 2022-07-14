@@ -1,13 +1,19 @@
 let userDetails = {
     fname: "Abhishek",
     lname:"Negi",
-    printDetails : function(){
-        console.log(this.fname)
     }
-}
-userDetails.printDetails();
+let printDetails = function(state,country){
+        console.log(this.fname+" from "+state+ " "+country)
+    }
+printDetails.call(userDetails,"Uttarakhand","India");
 let userDetails2={
     fname: "Virat",
     lname: "Kohli"
 }
-userDetails.printDetails.call(userDetails2)
+
+// call
+printDetails.call(userDetails2,"Mumbai", "India")
+
+//apply
+
+printDetails.apply(userDetails2,["Mumbai", "India"])
