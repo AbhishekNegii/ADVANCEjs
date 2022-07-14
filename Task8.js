@@ -22,3 +22,36 @@ printDetails.apply(userDetails2,["Mumbai", "India"]);
 
 let newdata= printDetails.bind(userDetails,"Uttarakhand", " India");
 newdata();
+
+
+let student ={
+    age: 20
+}
+let printAge= function(){
+    console.log(this.age)
+}
+
+let ageNew=printAge.bind(student);
+ageNew();
+
+
+// currying (In JS 2 methods are their for currying 1:- using Bind 2:- using Closer)
+
+//using Bind
+let multiply = function(x,y){
+    console.log(x*y);
+}
+
+let multiplyByTwo = multiply.bind(this,2);
+multiplyByTwo(3);
+
+//using closer
+ 
+let multiply1=function(x){
+    return function(y){
+        console.log(x*y);
+    }
+}
+
+let multiplyByTwo1 = multiply1(2);
+multiplyByTwo(4);
