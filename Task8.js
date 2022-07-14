@@ -9,11 +9,16 @@ printDetails.call(userDetails,"Uttarakhand","India");
 let userDetails2={
     fname: "Virat",
     lname: "Kohli"
-}
+};
 
 // call
-printDetails.call(userDetails2,"Mumbai", "India")
+printDetails.call(userDetails2,"Mumbai", "India");
 
 //apply
 
-printDetails.apply(userDetails2,["Mumbai", "India"])
+printDetails.apply(userDetails2,["Mumbai", "India"]);
+
+//Bind   ( same as call but copy function and invoke later)
+
+let newdata= printDetails.bind(userDetails,"Uttarakhand", " India");
+newdata();
