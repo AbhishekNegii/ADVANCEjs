@@ -51,8 +51,8 @@
                 }
                 axios.post('https://crudcrud.com/api/797ec1df6cb74f8b84e069f6ce32586a/appointmentdata',obj)
                 .then((response)=>{
-                    // showNewUserOnScreen(response.data)
-                    console.log(response)
+                    showNewUserOnScreen(response.data)
+                    // console.log(response)
                 })
                 .catch((err)=> {
                     // document.body.innerHTML=document.body.innerHTML + 'Something went wrong';
@@ -64,16 +64,19 @@
             }
 
             window.addEventListener("DOMContentLoaded", () => {
-                const localStorageObj = localStorage;
-                const localstoragekeys  = Object.keys(localStorageObj)
-
-                // for(var i =0; i< localstoragekeys.length; i++){
-                //     const key = localstoragekeys[i]
-                //     const userDetailsString = localStorageObj[key];
-                //     const userDetailsObj = JSON.parse(userDetailsString);
-                    // showNewUserOnScreen(userDetailsString)
+                    axios.get("https://crudcrud.com/api/797ec1df6cb74f8b84e069f6ce32586a/appointmentdata")
+                    .then((response)=>{
+                        // console.log(response)
+                        for(var i=0;i<response.data.length;i++)
+                        {
+                            showNewUserOnScreen(response.data[i]);
+                        }
+                    })
+                    .catch((err)=>{
+                        console.log(err)
+                    })
                 })
-        //    })
+        
 
             function showNewUserOnScreen(user){
                 document.getElementById('email').value = '';
