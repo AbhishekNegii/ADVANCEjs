@@ -41,7 +41,7 @@
               desc,
               category
             } 
-            axios.post("https://crudcrud.com/api/7662aef362f742ea8d3da34795a7782f/expenseTracker",obj)
+            axios.post("https://crudcrud.com/api/4b1982f7cdab4e9899742d673e879d83/expenseTracker",obj)
             .then((response)=>{
                 showNewUserOnScreen(response.data);
                 console.log(response)
@@ -51,12 +51,14 @@
             })
         } 
         window.addEventListener("DOMContentLoaded", () => {
-
-            axios.get("https://crudcrud.com/api/7662aef362f742ea8d3da34795a7782f/expenseTracker")
+           
+            axios.get("https://crudcrud.com/api/4b1982f7cdab4e9899742d673e879d83/expenseTracker")
             .then((response)=>{
+               
                     for(var i=0;i<response.data.length;i++){
                     showNewUserOnScreen(response.data[i]);
                 }
+                 
                             
             })
         })
@@ -68,7 +70,7 @@
 
 
             const parentNode = document.getElementById('listOfUsers');
-            const childHTML = `<li id=${user.desc}> ${user.amount} - ${user.category} - ${user.desc}
+            const childHTML = `<li id=${user._id}> ${user.amount} - ${user.category} - ${user.desc}
             <button onclick=deleteUser('${user._id}')> Delete User </button>
             <button onclick=editUserDetails('${user.email}','${user.amount}','${user.desc}','${user._id}')>Edit User </button>
             </li>`;
@@ -92,7 +94,8 @@
 
         function deleteUser(userId){
             console.log(userId)
-            axios.delete(`https://crudcrud.com/api/7662aef362f742ea8d3da34795a7782f/expenseTracker/${userId}`)
+            // removeUserFromScreen(userId)
+            axios.delete(`https://crudcrud.com/api/4b1982f7cdab4e9899742d673e879d83/expenseTracker/${userId}`)
             .then((response)=>{
                 removeUserFromScreen(userId)
             })
@@ -104,9 +107,10 @@
         }
 
         function removeUserFromScreen(userId){
+            console.log(userId)
             const parentNode = document.getElementById('listOfUsers');
             const childNodeToBeDeleted = document.getElementById(userId);
-            if(childNodeToBeDeleted) {
+                    if(childNodeToBeDeleted) {
                 parentNode.removeChild(childNodeToBeDeleted)
             }
         } 
